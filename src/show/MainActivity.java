@@ -1,9 +1,11 @@
 package show;
 
+import java.awt.FlowLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class Student {
+public class MainActivity {
 	
 	public static void main(String[] args) {
         // 显示应用 GUI
@@ -24,8 +26,9 @@ public class Student {
 
         // 创建及设置窗口
         JFrame frame = new JFrame("shnappi");
-        frame.setBounds(1000,1000,3000,2500);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        frame.setLayout(new FlowLayout());
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // 添加 "Hello World" 标签
         JLabel label = new JLabel("Hello World");
@@ -34,6 +37,7 @@ public class Student {
         // 显示窗口
         frame.pack();
         frame.setVisible(true);
+        frame.setSize(1000,600);
     }
 
     
