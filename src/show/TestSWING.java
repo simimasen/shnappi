@@ -1,40 +1,47 @@
 package show;
 
+import java.awt.Button;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Paint;
 
 import javax.swing.ImageIcon;
+import javax.swing.JApplet;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import references.JavaGraphics;
 
 public class TestSWING extends JFrame implements Runnable {
-	private int framewidth = 700, frameheight = 500;
+	private int frameWidth = 700, frameHeight = 600;
 	private Image cloud = new ImageIcon(
 			"/Users/Blair/Documents/workspace/demo/images/s1.png").getImage();
 	private Thread thread;
-	private int cloudX = 100;
+	private int cloudx = 100;
 
-	public void TestSWING() {
-		setBounds(100, 100, framewidth, frameheight);
+	public TestSWING() {
+		setBounds(100,100,frameWidth,frameHeight);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-		thread = new Thread(thread);
+		
+		thread = new Thread(this);
 		thread.start();
-
 	}
-
 	@Override
 	public void paint(Graphics g) {
+		super.paint(g);
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, framewidth, frameheight);
-		g.drawImage(cloud, cloudX, 150, null);
+		g.fillRect(0, 0, frameWidth, frameHeight);
+		g.setColor(Color.white);
+		g.fillRect(30, 40, 100, 50);
+		g.drawImage(cloud, cloudx, 150, null);
 	}
-
 	@Override
 	public void run() {
-		while (true) {
-			cloudX++;
+		while(true){
+			cloudx++;
 			repaint();
 			try {
 				Thread.sleep(200);
@@ -42,7 +49,6 @@ public class TestSWING extends JFrame implements Runnable {
 			}
 		}
 	}
-
 	public static void main(String[] args) {
 		new TestSWING();
 	}
